@@ -2,175 +2,104 @@
 
 &nbsp;
 
-## Media Queries
+## .gitignore
 
-The @media rule is used in media queries to apply different styles for different media types/devices.
-
-Media queries can be used to check many things, such as:
-
-- width and height of the viewport
-- width and height of the device
-- orientation (is the tablet/phone in landscape or portrait mode?)
-- resolution
-
-Using media queries are a popular technique for delivering a tailored style sheet (responsive web design) to desktops, laptops, tablets, and mobile phones.
-
-    <style>
-
-    body {
-    background-color: yellow;
-    }
-
-    @media only screen and (max-width: 600px) {
-    body {
-        background-color: lightblue;
-      }
-    }
-
-    <!-- When the width of this document is 600 pixels or less, the background-color is "lightblue", otherwise it is "yellow" -->
-
-    </style>
+When you make commits in a git repository, you choose which files to stage and commit by using git add FILENAME and then git commit. But what if there are some files that you never want to commit? It's too easy to accidentally commit them (especially if you use git add . to stage all files in the current directory). That's where a .gitignore file comes in handy. It lets Git know that it should ignore certain files and not track them.
 
 &nbsp;
 
-## DOM Manipulation (Document Object Model)
+What Kind of Files Should You Ignore?
 
-The Document Object Model (DOM) is the data representation of the objects that comprise the structure and content of a document on the web.
+- Log files
+- Files with API keys/secrets, credentials, or - sensitive information
+  Useless system files like .DS_Store on macOS
+- Generated files like dist folders
+- Dependencies which can be downloaded from a package manager
 
-The Document Object Model (DOM) is a programming interface for HTML and XML documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects. That way, programming languages can connect to the page.
-
-A Web page is a document. This document can be either displayed in the browser window or as the HTML source. But it is the same document in both cases. The Document Object Model (DOM) represents that same document so it can be manipulated. The DOM is an object-oriented representation of the web page, which can be modified with a scripting language such as JavaScript.
-
-When a web page is loaded, the browser creates a Document Object Model of the page.
-
-&nbsp;
-
-The HTML DOM model is constructed as a tree of Objects:
-![DOM TREE](./dom-tree.jpg)
+You can get an idea for what sort of files to ignore on gitignore.io, by selecting your operating system, text editor or IDE, languages, and frameworks.
 
 &nbsp;
 
-## querySelector();
+How .gitignore Works
 
-The querySelector() method returns the first element that matches one or more CSS selectors. If no match is found, it returns null.
+Here's how it works. A .gitignore file is a plain text file where each line contains a pattern for files/directories to ignore. Generally, this is placed in the root folder of the repository, and that's what I recommend. However, you can put it in any folder in the repository and you can also have multiple .gitignore files. The patterns in the files are relative to the location of that .gitignore file.
 
-Before querySelector() was introduced, developers widely used the getElementById() method which fetches an element with a specified id value.
+Literal File Names
 
-Although getElementById() is still a useful method, but with the newer querySelector() and querySelectorAll() methods we are free to target elements based on any CSS selector, thus we have more flexibility.
+The easiest pattern is a literal file name, for example:
 
-&nbsp;
+    .DS_Store
 
-    document.querySelector();
-    document.querySelectorAll();
+This will ignore any files named .DS_Store, which is a common file on macOS.
 
-    //The most used to access the DOM, because with it you can access class, id and tag. So each case would be:
+Directories
 
-    document.querySelector('#id');
-    document.querySelector('.classname');
-    document.querySelector('section');
+You can ignore entire directories, just by including their paths and putting a / on the end:
 
-The querySelector() method returns the first element that matches a specified CSS selector(s) in the document.
+    node_modules/
+    logs/
 
-Note: The querySelector() method only returns the first element that matches the specified selectors. To return all the matches, use the querySelectorAll() method instead.
+If you leave the slash off of the end, it will match both files and directories with that name.
 
 &nbsp;
 
-## Event Listeners
+## jQuery
 
-An event listener is a procedure or function in a computer program that waits for an event to occur. Examples of an event are the user clicking or moving the mouse, pressing a key on the keyboard, disk I/O, network activity, or an internal timer or interrupt. The listener is programmed to react to an input or signal by calling the event's handler.
+jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.
 
-The term event listener is often specific to Java and JavaScript. In other languages, a subroutine that performs a similar function is referred to as an event handler.
-
-The following JavaScript code would add an event listener to an HTML document:
-
-    document.addEventListener('click', myfunction, false);
-
-In this example, when HTML is rendered in a browser, the listener calls the function "myfunction" (defined elsewhere in the script) when the user clicks.
+https://jquery.com/
 
 &nbsp;
 
-## Absolute Positioning In CSS
+## window.localStorage
 
-This is a very powerful type of positioning that allows you to literally place any page element exactly where you want it. You use the positioning attributes top, left, bottom, and right to set the location. Remember that these values will be relative to the next parent element with relative (or absolute) positioning. If there is no such parent, it will default all the way back up to the <html> element itself meaning it will be placed relative to the page itself.
+The localStorage read-only property of the window interface allows you to access a Storage object for the Document's origin; the stored data is saved across browser sessions.
 
-The trade-off (and most important thing to remember) about absolute positioning is that these elements are removed from the flow of elements on the page. An element with this type of positioning is not affected by other elements and it doesn’t affect other elements. This is a serious thing to consider every time you use absolute positioning. Its overuse or improper use can limit the flexibility of your site.
+localStorage is similar to sessionStorage, except that while localStorage data has no expiration time, sessionStorage data gets cleared when the page session ends — that is, when the page is closed. (localStorage data for a document loaded in a "private browsing" or "incognito" session is cleared when the last "private" tab is closed.)
 
-&nbsp;
-
-## Nested Event Listeners
-
-    const button1 = document.querySelector('#button-1');
-    const button2 = document.querySelector('#button-2');
-    const output = document.querySelector('.output');
-
-    // Example of nested event listener (not reccomended)
-    // The button2 eventListener will not be set until button1 is clicked
-
-    button1.addEventListener('click', () => {
-
-        output.style.backgroundColor = 'green';
-
-        button2.addEventListener('click', () => {
-            output.style.backgroundColor = 'red';
-        });
-
-    });
+    myStorage = window.localStorage;
 
 &nbsp;
 
-## Event
+The localStorage mechanism is available via the Window.localStorage property. Window.localStorage is part of the Window interface in JavaScript, which represents a window containing a DOM document.
 
-What is an Event ?
-JavaScript's interaction with HTML is handled through events that occur when the user or the browser manipulates a page.
+The Window interface features a wide range of functions, constructors, objects, and namespaces. Window.localStorage is a read-only property that returns a reference to the local storage object used to store data that is only accessible to the origin that created it.
 
-When the page loads, it is called an event. When the user clicks a button, that click too is an event. Other examples include events like pressing any key, closing a window, resizing a window, etc.
+How does localStorage work?
+To use localStorage in your web applications, there are five methods to choose from:
 
-Developers can use these events to execute JavaScript coded responses, which cause buttons to close windows, messages to be displayed to users, data to be validated, and virtually any other type of response imaginable.
+- setItem(): Add key and value to localStorage
+- getItem(): This is how you get items from localStorage
+- removeItem(): Remove an item by key from localStorage
+- clear(): Clear all localStorage
+- key(): Passed a number to retrieve the key of a localStorage
+- setItem(): How to store values in localStorage
+  Just as the name implies, this method allows you to store values in the localStorage object.
 
-Events are a part of the Document Object Model (DOM) Level 3 and every HTML element contains a set of events which can trigger JavaScript Code.
+It takes two parameters: a key and a value. The key can be referenced later to fetch the value attached to it.
 
-&nbsp;
+    window.localStorage.setItem('name', 'Obaseki Nosa');
 
-Examples
+Where name is the key and Obaseki Nosa is the value. Also note that localStorage can only store strings.
 
-- onclick event type. This is the most frequently used event type which occurs when a user clicks the left button of his mouse.
+To store arrays or objects, you would have to convert them to strings.
 
-- onsubmit event type. onsubmit is an event that occurs when you try to submit a form.
-
-&nbsp;
-
-## Target Event Property
-
-The target event property returns the element that triggered the event.
-
-The target property gets the element on which the event originally occurred, opposed to the currentTarget property, which always refers to the element whose event listener triggered the event.
-
-    event.target
+To do this, we use the JSON.stringify() method before passing to setItem().
 
 &nbsp;
 
-## Creating DOM Elements
+## Modular Code / Modular programming
 
-The createElement() method creates an Element Node with the specified name.
+Modular programming is a software design technique that emphasizes separating the functionality of a program into independent, interchangeable modules, such that each contains everything necessary to execute only one aspect of the desired functionality.
 
-    After the element is created, use the element.appendChild() or element.insertBefore() method to insert it to the document.
+Writing a Modular Code is an important step in software development as it allows the use of the same code in the module by referencing it to perform a specific action in different locations in the program. This method facilitates the debugging of large programs, increase code reusability & readability, improves reliability, and also helps in programming with multiples devs or teams.
 
-    // Retrieves and style the 'container' element
-    const container = document.querySelector('#container');
-    container.style.padding = '20px';
-    container.style.backgroundColor = 'purple';
+    “The ratio of time spent reading versus writing is well over 10 to 1. We are constantly reading old code as part of the effort to write new code. Therefore, making it easy to read makes it easier to write.”
 
-    // Creates a new element (not yet added to page)
-    const title = document.createElement('h1');
-    title.style.color = 'white';
-    title.style.fontFamily = 'Arial, sans-serif';
-    title.innerText = 'This is the best class ever!';
+    Robert C. Martin, Clean Code: A Handbook of Agile Software Craftsmanship
 
-    // Adds an element to the page
-    container.appendChild(title);
+&nbsp;
 
-    // We can continue to modify title after its been added to the page
-    title.style.color = 'green';
+    “Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.”
 
-    // To remove an element from the page
-    // title.remove();
+    John F. Woods
